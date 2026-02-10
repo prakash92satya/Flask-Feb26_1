@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:039612853328:task-definition/loan_app_task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:220197470235:task-definition/loan_app_task:1",
     "containerDefinitions": [
         {
             "name": "loan_app_container",
-            "image": "039612853328.dkr.ecr.us-east-1.amazonaws.com/flask_loan_repo:latest",
+            "image": "220197470235.dkr.ecr.us-east-2.amazonaws.com/flask_loan_app@sha256:4ee221b5dce3255f3f2307a3190d5f26b3f651baa133ff6784b80f990f118d5f",
             "cpu": 0,
             "portMappings": [
                 {
@@ -25,7 +25,7 @@
                 "options": {
                     "awslogs-group": "/ecs/loan_app_task",
                     "awslogs-create-group": "true",
-                    "awslogs-region": "us-east-1",
+                    "awslogs-region": "us-east-2",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
@@ -34,7 +34,8 @@
         }
     ],
     "family": "loan_app_task",
-    "executionRoleArn": "arn:aws:iam::039612853328:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::220197470235:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::220197470235:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
     "volumes": [],
@@ -53,6 +54,12 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
             "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
@@ -68,7 +75,8 @@
     "placementConstraints": [],
     "compatibilities": [
         "EC2",
-        "FARGATE"
+        "FARGATE",
+        "MANAGED_INSTANCES"
     ],
     "requiresCompatibilities": [
         "FARGATE"
@@ -79,8 +87,8 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-08-16T01:59:36.374Z",
-    "registeredBy": "arn:aws:iam::039612853328:user/devops_user_1350381_63424",
+    "registeredAt": "2026-02-10T08:50:02.755Z",
+    "registeredBy": "arn:aws:iam::220197470235:root",
     "enableFaultInjection": false,
     "tags": []
 }
